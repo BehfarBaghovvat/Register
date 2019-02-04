@@ -23,17 +23,17 @@ namespace Register
 
         private void UserNametextBox_Enter(object sender, EventArgs e)
         {
-            if (UserNametextBox.Text== "Example: Behfar or Ali Moradi")
+            if (usernameTextBox.Text== "Example: Behfar or Ali Moradi")
             {
-                UserNametextBox.Text = string.Empty; 
+                usernameTextBox.Text = string.Empty; 
             }
         }
 
         private void UserNametextBox_MouseClick(object sender, MouseEventArgs e)
         {
-            if (UserNametextBox.Text == "Example: Behfar or Ali Moradi")
+            if (usernameTextBox.Text == "Example: Behfar or Ali Moradi")
             {
-                UserNametextBox.Text = string.Empty;
+                usernameTextBox.Text = string.Empty;
             }
         }
 
@@ -44,34 +44,34 @@ namespace Register
             //-----If the condition is set, the control settings return to the default state------
             //------------------------------------------------------------------------------------
 
-            if (UserNametextBox.Text == string.Empty ||
-                UserNametextBox.Text == "Example: Behfar or Ali Moradi")
+            if (usernameTextBox.Text == string.Empty ||
+                usernameTextBox.Text == "Example: Behfar or Ali Moradi")
             {
-                UserNametextBox.Text = "Example: Behfar or Ali Moradi";
-                UserNametextBox.ForeColor = Color.Gray;
+                usernameTextBox.Text = "Example: Behfar or Ali Moradi";
+                usernameTextBox.ForeColor = Color.Gray;
             }
         }       
 
         private void UserNametextBox_TextChanged(object sender, EventArgs e)
         {
-            UserNametextBox.ForeColor = SystemColors.WindowText;
+            usernameTextBox.ForeColor = SystemColors.WindowText;
             
             //------------------------------------------------------------------------------------
             //----------The condition for activating or deactivating the button is reset----------
             //------------------------------------------------------------------------------------
 
-            if ((UserNametextBox.Text != "Example: Behfar or Ali Moradi" &&
-                UserNametextBox.Text != string.Empty)||
+            if ((usernameTextBox.Text != "Example: Behfar or Ali Moradi" &&
+                usernameTextBox.Text != string.Empty)||
                 (NewEmailtextBox.Text != "Example: Behfar.Baghovvat@Gmail.com" &&
                 NewEmailtextBox.Text != string.Empty))
             {
-                UserNametextBox.ForeColor = SystemColors.WindowText;
-                Resetbutton.Enabled = true;
+                usernameTextBox.ForeColor = SystemColors.WindowText;
+                resetButton.Enabled = true;
             }
             else
             {
                 
-                Resetbutton.Enabled = false;
+                resetButton.Enabled = false;
             }
         }               
 
@@ -142,15 +142,15 @@ namespace Register
 
             if ((NewEmailtextBox.Text != "Example: Behfar.Baghovvat@Gmail.com" &&
                 NewEmailtextBox.Text != string.Empty) ||(
-                UserNametextBox.Text != "Example: Behfar or Ali Moradi" &&
-                UserNametextBox.Text != string.Empty))
+                usernameTextBox.Text != "Example: Behfar or Ali Moradi" &&
+                usernameTextBox.Text != string.Empty))
             {
                 NewEmailtextBox.ForeColor = SystemColors.WindowText;
-                Resetbutton.Enabled = true;
+                resetButton.Enabled = true;
             }
             else
             {
-                Resetbutton.Enabled = false;
+                resetButton.Enabled = false;
             }
         }        
 
@@ -162,11 +162,11 @@ namespace Register
             //--------------------------------------------------------------------------
             if (ConfirmaEmailtextBox.Text != string.Empty)
             {
-                Resetbutton.Enabled = true;
+                resetButton.Enabled = true;
             }
             else
             {
-                Resetbutton.Enabled = false;
+                resetButton.Enabled = false;
             }
         }
 
@@ -178,11 +178,11 @@ namespace Register
 
             if (NewPasswordtextBox.Text != string.Empty)
             {                
-                Resetbutton.Enabled = true;
+                resetButton.Enabled = true;
             }
             else
             {
-                Resetbutton.Enabled = false;
+                resetButton.Enabled = false;
             }
         }
 
@@ -192,28 +192,28 @@ namespace Register
 
             if (ConfirmPasswordtextBox.Text != string.Empty)
             {
-                Resetbutton.Enabled = true;
+                resetButton.Enabled = true;
             }
             else
             {
-                Resetbutton.Enabled = false;
+                resetButton.Enabled = false;
             }
 
             //-------The condition for activating or deactivating the registration button
 
-            if ((UserNametextBox.Text != "Example: Behfar or Ali Moradi" &&
-                UserNametextBox.Text != string.Empty) ||
+            if ((usernameTextBox.Text != "Example: Behfar or Ali Moradi" &&
+                usernameTextBox.Text != string.Empty) ||
                 (NewEmailtextBox.Text != "Example: Behfar.Baghovvat@Gmail.com" &&
                 NewEmailtextBox.Text != string.Empty)&&
                 ConfirmaEmailtextBox.Text!=string.Empty &&
                 NewEmailtextBox.Text!=string.Empty &&
                 ConfirmPasswordtextBox.Text!=string.Empty)
             {
-                Registerbutton.Enabled = true;
+                registerButton.Enabled = true;
             }
             else
             {
-                Registerbutton.Enabled = false;
+                registerButton.Enabled = false;
             }
 
 
@@ -224,13 +224,13 @@ namespace Register
             //---------------------------------------------------------
             //---Check all box controls to confirm the registration!---
             //---------------------------------------------------------
-            if ((UserNametextBox.Text != "Example: Behfar or Ali Moradi" ||
-                UserNametextBox.Text != string.Empty)
+            if ((usernameTextBox.Text != "Example: Behfar or Ali Moradi" ||
+                usernameTextBox.Text != string.Empty)
                 && ConfirmPasswordtextBox.Text == NewPasswordtextBox.Text &&
                 ConfirmaEmailtextBox.Text == NewEmailtextBox.Text)
             {
 
-                UserNametextBox.BackColor = SystemColors.Window;
+                usernameTextBox.BackColor = SystemColors.Window;
                 NewEmailtextBox.BackColor = SystemColors.Window;
                 ConfirmaEmailtextBox.BackColor = SystemColors.Window;
                 NewPasswordtextBox.BackColor = SystemColors.Window;
@@ -278,10 +278,10 @@ namespace Register
             //-----------Clear all text box controls and return to the original state---------------
             //--------------------------------------------------------------------------------------
 
-            Resetbutton.Enabled = false;
+            resetButton.Enabled = false;
 
-            UserNametextBox.Text = "Example: Behfar or Ali Moradi";
-            UserNametextBox.ForeColor = Color.Gray;
+            usernameTextBox.Text = "Example: Behfar or Ali Moradi";
+            usernameTextBox.ForeColor = Color.Gray;
 
             NewEmailtextBox.Text = "Example: Behfar.Baghovvat@Gmail.com";
             NewEmailtextBox.ForeColor = Color.Gray;
