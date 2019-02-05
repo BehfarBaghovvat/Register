@@ -10,36 +10,33 @@ using System.Windows.Forms;
 
 namespace Register
 {
-    public partial class RegisterForm : Form
+    public partial class registerForm : Form
     {
-        bool NewEmailbool1, NewEmailbool2, ConfirmEmailbool1, ConfirmEmailbool2;
-        DialogResult dialogResult;
-
-
-        public RegisterForm()
+        public registerForm()
         {
             InitializeComponent();
-        }        
-
-        private void UserNametextBox_Enter(object sender, EventArgs e)
-        {
-            if (usernameTextBox.Text== "Example: Behfar or Ali Moradi")
-            {
-                usernameTextBox.Text = string.Empty; 
-            }
         }
 
-        private void UserNametextBox_MouseClick(object sender, MouseEventArgs e)
+        #region Variable
+
+        DialogResult resultDialog;
+        bool emailaddressBool1, emailaddressBool2, confirmemailaddressBool1, confirmemailaddressBool2;
+        
+        #endregion /Variable
+
+        #region Username
+
+        private void usernameTextBox_Enter(object sender, EventArgs e)
         {
             if (usernameTextBox.Text == "Example: Behfar or Ali Moradi")
             {
                 usernameTextBox.Text = string.Empty;
             }
+
         }
 
-        private void UserNametextBox_Leave(object sender, EventArgs e)
+        private void usernameTextBox_Leave(object sender, EventArgs e)
         {
-
             //------------------------------------------------------------------------------------
             //-----If the condition is set, the control settings return to the default state------
             //------------------------------------------------------------------------------------
@@ -50,147 +47,69 @@ namespace Register
                 usernameTextBox.Text = "Example: Behfar or Ali Moradi";
                 usernameTextBox.ForeColor = Color.Gray;
             }
-        }       
 
-        private void UserNametextBox_TextChanged(object sender, EventArgs e)
+        }         
+
+        private void usernameTextBox_MouseClick(object sender, MouseEventArgs e)
         {
-            usernameTextBox.ForeColor = SystemColors.WindowText;
-            
+            if (usernameTextBox.Text == "Example: Behfar or Ali Moradi")
+            {
+                usernameTextBox.Text = string.Empty;
+            }
+        }
+
+        private void usernameTextBox_TextChanged(object sender, EventArgs e)
+        {
             //------------------------------------------------------------------------------------
             //----------The condition for activating or deactivating the button is reset----------
             //------------------------------------------------------------------------------------
 
             if ((usernameTextBox.Text != "Example: Behfar or Ali Moradi" &&
-                usernameTextBox.Text != string.Empty)||
-                (NewEmailtextBox.Text != "Example: Behfar.Baghovvat@Gmail.com" &&
-                NewEmailtextBox.Text != string.Empty))
+                usernameTextBox.Text != string.Empty) ||
+                (emailaddressTextBox.Text != "Example: Behfar.Baghovvat@Gmail.com" &&
+                emailaddressTextBox.Text != string.Empty))
             {
                 usernameTextBox.ForeColor = SystemColors.WindowText;
                 resetButton.Enabled = true;
             }
             else
             {
-                
+
                 resetButton.Enabled = false;
             }
-        }               
-
-        private void NewEmailtextBox_Enter(object sender, EventArgs e)
-        {
-            if (NewEmailtextBox.Text == "Example: Behfar.Baghovvat@Gmail.com")
-            {
-                NewEmailtextBox.Text = string.Empty;
-            }
-            
-        }
-
-        private void NewEmailtextBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (NewEmailtextBox.Text == "Example: Behfar.Baghovvat@Gmail.com")
-            {
-                NewEmailtextBox.Text = string.Empty;
-            }
-        }
-
-        private void NewEmailtextBox_Leave(object sender, EventArgs e)
-        {
-
-            //---------------------------------------------------------------------------------
-            //----If the condition is set, the control settings return to the default state----
-            //---------------------------------------------------------------------------------
-
-            if (NewEmailtextBox.Text == string.Empty ||
-                NewEmailtextBox.Text == "Example: Behfar.Baghovvat@Gmail.com")
-            {
-                NewEmailtextBox.Text = "Example: Behfar.Baghovvat@Gmail.com";
-                NewEmailtextBox.ForeColor = Color.Gray;
-            }
-
-            //------------------------------------------------------------
-            //---------------------Check email format.--------------------
-            //------------------------------------------------------------
-
-            NewEmailbool1 = (NewEmailtextBox.Text).Contains('@');
-            NewEmailbool2 = (NewEmailtextBox.Text).EndsWith(".com");
-
-            if (NewEmailbool1 == false || NewEmailbool2 == false)
-            {
-                dialogResult = MessageBox.Show
-                     ("The type of email template is not correct. Please re-enter the correct email.", "", MessageBoxButtons.OK);
-
-                if (dialogResult == DialogResult.OK)
-                {
-                    NewEmailtextBox.BackColor = Color.Salmon;
-                    NewEmailtextBox.Focus();
-                    NewEmailtextBox.SelectAll();
-                }
-            }
-            else
-            {
-                NewEmailtextBox.BackColor = SystemColors.Window;
-            }
-
 
         }
 
-        private void NewEmailtextBox_TextChanged(object sender, EventArgs e)
+        #endregion /Username
+
+        #region Password
+
+        private void passwordTextBox_TextChanged(object sender, EventArgs e)
         {
-            NewEmailtextBox.ForeColor = SystemColors.WindowText;
             //--------------------------------------------------------------------------
             //-----The condition for activating or deactivating the button is reset-----
             //--------------------------------------------------------------------------
 
-            if ((NewEmailtextBox.Text != "Example: Behfar.Baghovvat@Gmail.com" &&
-                NewEmailtextBox.Text != string.Empty) ||(
-                usernameTextBox.Text != "Example: Behfar or Ali Moradi" &&
-                usernameTextBox.Text != string.Empty))
+            if (passwordTextBox.Text != string.Empty)
             {
-                NewEmailtextBox.ForeColor = SystemColors.WindowText;
                 resetButton.Enabled = true;
             }
             else
             {
                 resetButton.Enabled = false;
             }
+
         }        
 
-        private void ConfirmaEmailtextBox_TextChanged(object sender, EventArgs e)
-        {
+        #endregion /Password
 
-            //--------------------------------------------------------------------------
-            //-----The condition for activating or deactivating the button is reset-----
-            //--------------------------------------------------------------------------
-            if (ConfirmaEmailtextBox.Text != string.Empty)
-            {
-                resetButton.Enabled = true;
-            }
-            else
-            {
-                resetButton.Enabled = false;
-            }
-        }
+        #region Confirm Password
 
-        private void NewPasswordtextBox_TextChanged(object sender, EventArgs e)
-        {
-            //--------------------------------------------------------------------------
-            //-----The condition for activating or deactivating the button is reset-----
-            //--------------------------------------------------------------------------
-
-            if (NewPasswordtextBox.Text != string.Empty)
-            {                
-                resetButton.Enabled = true;
-            }
-            else
-            {
-                resetButton.Enabled = false;
-            }
-        }
-
-        private void ConfirmPasswordtextBox_TextChanged(object sender, EventArgs e)
+        private void confirmpasswordTextBox_TextChanged(object sender, EventArgs e)
         {
             //----------The condition for activating or deactivating the button is reset
 
-            if (ConfirmPasswordtextBox.Text != string.Empty)
+            if (confirmpasswordTextBox.Text != string.Empty)
             {
                 resetButton.Enabled = true;
             }
@@ -203,11 +122,11 @@ namespace Register
 
             if ((usernameTextBox.Text != "Example: Behfar or Ali Moradi" &&
                 usernameTextBox.Text != string.Empty) ||
-                (NewEmailtextBox.Text != "Example: Behfar.Baghovvat@Gmail.com" &&
-                NewEmailtextBox.Text != string.Empty)&&
-                ConfirmaEmailtextBox.Text!=string.Empty &&
-                NewEmailtextBox.Text!=string.Empty &&
-                ConfirmPasswordtextBox.Text!=string.Empty)
+                (emailaddressTextBox.Text != "Example: Behfar.Baghovvat@Gmail.com" &&
+                emailaddressTextBox.Text != string.Empty) &&
+                confrirmemailaddressTextBox.Text != string.Empty &&
+                emailaddressTextBox.Text != string.Empty &&
+                confirmpasswordTextBox.Text != string.Empty)
             {
                 registerButton.Enabled = true;
             }
@@ -216,63 +135,180 @@ namespace Register
                 registerButton.Enabled = false;
             }
 
+        }
+
+        
+
+        #endregion /Confirm Password
+
+        #region Email Address        
+
+        private void emailaddressTextBox_Enter(object sender, EventArgs e)
+        {
+            if (emailaddressTextBox.Text == "Example: Behfar.Baghovvat@Gmail.com")
+            {
+                emailaddressTextBox.Text = string.Empty;
+            }
+
+        }        
+
+        private void emailaddressTextBox_Leave(object sender, EventArgs e)
+        {
+            //---------------------------------------------------------------------------------
+            //----If the condition is set, the control settings return to the default state----
+            //---------------------------------------------------------------------------------
+
+            if (emailaddressTextBox.Text == string.Empty ||
+                emailaddressTextBox.Text == "Example: Behfar.Baghovvat@Gmail.com")
+            {
+                emailaddressTextBox.Text = "Example: Behfar.Baghovvat@Gmail.com";
+                emailaddressTextBox.ForeColor = Color.Gray;
+            }
+
+            //------------------------------------------------------------
+            //---------------------Check email format.--------------------
+            //------------------------------------------------------------
+
+            emailaddressBool1 = (emailaddressTextBox.Text).Contains('@');
+            emailaddressBool2 = (emailaddressTextBox.Text).EndsWith(".com");
+
+            if (emailaddressBool1 == false || emailaddressBool2 == false)
+            {
+                resultDialog = MessageBox.Show
+                     (text: "The type of email template is not correct. Please re-enter the correct email.",
+                     caption: "Not correct",
+                     buttons: MessageBoxButtons.OK,
+                     icon: MessageBoxIcon.Error);
+
+                if (resultDialog == DialogResult.OK)
+                {
+                    emailaddressTextBox.BackColor = Color.Salmon;
+                    emailaddressTextBox.Focus();
+                    emailaddressTextBox.SelectAll();
+                }
+            }
+            else
+            {
+                emailaddressTextBox.BackColor = SystemColors.Window;
+            }
+
+        }        
+
+        private void emailaddressTextBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (emailaddressTextBox.Text == "Example: Behfar.Baghovvat@Gmail.com")
+            {
+                emailaddressTextBox.Text = string.Empty;
+            }
+
+        }       
+
+        private void emailaddressTextBox_TextChanged(object sender, EventArgs e)
+        {
+            emailaddressTextBox.ForeColor = SystemColors.WindowText;
+            //--------------------------------------------------------------------------
+            //-----The condition for activating or deactivating the button is reset-----
+            //--------------------------------------------------------------------------
+
+            if ((emailaddressTextBox.Text != "Example: Behfar.Baghovvat@Gmail.com" &&
+                emailaddressTextBox.Text != string.Empty) || (
+                usernameTextBox.Text != "Example: Behfar or Ali Moradi" &&
+                usernameTextBox.Text != string.Empty))
+            {
+                emailaddressTextBox.ForeColor = SystemColors.WindowText;
+                resetButton.Enabled = true;
+            }
+            else
+            {
+                resetButton.Enabled = false;
+            }
 
         }
 
-        private void Registerbutton_Click(object sender, EventArgs e)
+        #endregion /Email Address
+
+        #region Confirm Email Address
+
+        private void confrirmemailaddressTextBox_TextChanged(object sender, EventArgs e)
+        {
+            //--------------------------------------------------------------------------
+            //-----The condition for activating or deactivating the button is reset-----
+            //--------------------------------------------------------------------------
+            if (confrirmemailaddressTextBox.Text != string.Empty)
+            {
+                resetButton.Enabled = true;
+            }
+            else
+            {
+                resetButton.Enabled = false;
+            }
+        }
+
+        #endregion /Confirm Email Address
+
+        #region Register
+
+        private void registerButton_Click(object sender, EventArgs e)
         {
             //---------------------------------------------------------
             //---Check all box controls to confirm the registration!---
             //---------------------------------------------------------
             if ((usernameTextBox.Text != "Example: Behfar or Ali Moradi" ||
                 usernameTextBox.Text != string.Empty)
-                && ConfirmPasswordtextBox.Text == NewPasswordtextBox.Text &&
-                ConfirmaEmailtextBox.Text == NewEmailtextBox.Text)
+                && confirmpasswordTextBox.Text == passwordTextBox.Text &&
+                confrirmemailaddressTextBox.Text == emailaddressTextBox.Text)
             {
 
                 usernameTextBox.BackColor = SystemColors.Window;
-                NewEmailtextBox.BackColor = SystemColors.Window;
-                ConfirmaEmailtextBox.BackColor = SystemColors.Window;
-                NewPasswordtextBox.BackColor = SystemColors.Window;
-                ConfirmPasswordtextBox.BackColor = SystemColors.Window;
-                MessageBox.Show("Registration completed...");
-            }
-
-            //---------------------------------------------------------
-            //-------------------Check Email One!----------------------
-            //---------------------------------------------------------
-
-            else if (ConfirmaEmailtextBox.Text != NewEmailtextBox.Text)
-            {
-                MessageBox.Show("E-Mail do not match. Please try again.");
-
-                ConfirmaEmailtextBox.BackColor = Color.Salmon;
-                ConfirmaEmailtextBox.Focus();
-            }
+                emailaddressTextBox.BackColor = SystemColors.Window;
+                confrirmemailaddressTextBox.BackColor = SystemColors.Window;
+                passwordTextBox.BackColor = SystemColors.Window;
+                confirmpasswordTextBox.BackColor = SystemColors.Window;
+                MessageBox.Show(text:"Registration completed...",
+                    caption: "Sign up confirmation",
+                    buttons:MessageBoxButtons.OK,
+                    icon:MessageBoxIcon.Information);
+            }            
 
             //---------------------------------------------------------
             //--------------Checking one's password!-------------------
             //---------------------------------------------------------
 
-            else if (ConfirmPasswordtextBox.Text != NewPasswordtextBox.Text)
+            else if (confirmpasswordTextBox.Text != passwordTextBox.Text)
             {
 
-                MessageBox.Show("Passwords do not match. Please try again.");
+                MessageBox.Show(text:"Passwords do not match. Please try again.",
+                    caption:"Error Match",
+                    buttons:MessageBoxButtons.OK,
+                    icon:MessageBoxIcon.Error);
 
-                ConfirmPasswordtextBox.BackColor = Color.Salmon;
-                ConfirmPasswordtextBox.Focus();
+                confirmpasswordTextBox.BackColor = Color.Salmon;
+                confirmpasswordTextBox.Focus();
+            }            
+
+            //---------------------------------------------------------
+            //-------------------Check Email One!----------------------
+            //---------------------------------------------------------
+
+            else if (confrirmemailaddressTextBox.Text != emailaddressTextBox.Text)
+            {
+                MessageBox.Show("E-Mail do not match. Please try again.");
+
+                confrirmemailaddressTextBox.BackColor = Color.Salmon;
+                confrirmemailaddressTextBox.Focus();
             }
+            else
+            {
+                confirmpasswordTextBox.BackColor = SystemColors.Window;
+                confrirmemailaddressTextBox.BackColor = SystemColors.Window;
+            }
+
         }
 
-        private void Exitbutton_Click(object sender, EventArgs e)
-        {
+        #endregion /Register
 
-            //-----Exit Application-----
-
-            this.Close();
-        }
-
-        private void Resetbutton_Click(object sender, EventArgs e)
+        #region Reset
+        private void resetButton_Click(object sender, EventArgs e)
         {
             //--------------------------------------------------------------------------------------
             //-----------Clear all text box controls and return to the original state---------------
@@ -283,16 +319,46 @@ namespace Register
             usernameTextBox.Text = "Example: Behfar or Ali Moradi";
             usernameTextBox.ForeColor = Color.Gray;
 
-            NewEmailtextBox.Text = "Example: Behfar.Baghovvat@Gmail.com";
-            NewEmailtextBox.ForeColor = Color.Gray;
+            emailaddressTextBox.Text = "Example: Behfar.Baghovvat@Gmail.com";
+            emailaddressTextBox.ForeColor = Color.Gray;
 
-            ConfirmaEmailtextBox.Text = string.Empty;
+            confrirmemailaddressTextBox.Text = string.Empty;
 
-            NewPasswordtextBox.Text = string.Empty;
+            passwordTextBox.Text = string.Empty;
 
-            ConfirmPasswordtextBox.Text = string.Empty;
+            confirmpasswordTextBox.Text = string.Empty;
 
         }
+        #endregion /Reset
+
+        #region Exit
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            //---------------------------------------------------------
+            //----------------Message for exit...!---------------------
+            //---------------------------------------------------------
+            resultDialog = MessageBox.Show
+                 (text: "Are you sure you want to leave?",
+                 caption: "Exit",
+                 buttons: MessageBoxButtons.YesNo,
+                 icon: MessageBoxIcon.Hand,
+                 defaultButton: MessageBoxDefaultButton.Button2);
+
+            if (resultDialog == DialogResult.Yes)
+            {
+                //-----------------Exit Application--------------------
+                System.Windows.Forms.Application.Exit();
+            }
+        }
+
+        #endregion /Exit
+
+
+
+
+
+
 
     }
 }
